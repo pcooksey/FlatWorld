@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1374961980 source:c:\users\pcooksey\documents\github\flatworld\flatworld\main.cpp
+	"SDL/SDL.h"
+	"include\world.h"
+	<string.h>
+
+1374962744 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
+	"SDL/SDL.h"
+	"object.h"
+	<string>
+	<list>
+
+1374962703 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\world.cpp
+	"..\include\world.h"
+
+1374962727 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\object.cpp
+	"..\include\object.h"
+
+1374961780 c:\users\pcooksey\documents\github\flatworld\flatworld\include\object.h
+	"SDL\SDL.h"
+	<string>
+	<ctime>
+	<limits>
+
