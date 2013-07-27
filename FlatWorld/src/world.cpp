@@ -1,8 +1,9 @@
 #include "..\include\world.h"
 
 World::World()
- : objects()
+ : success(false), objects()
 {
+    screen = NULL;
     success = init();
 }
 
@@ -34,22 +35,22 @@ bool World::init()
     return true;
 }
 
-bool World::start()
+void World::getStart()
+{
+    start();
+}
+
+int World::start()
 {
     bool quit = false;
-    /// Keep track of the current frame
-    int frame = 0;
-    /// Whether or not to cap the frame rate
-    bool cap = true;
     /// The frame rate regulator
-    int fps;
+    int delta = SDL_GetTicks(), time;
     /// Object iterator
     std::list<Object*>::iterator obj;
 
     SDL_Event event;
     while(!quit)
     {
-        fps = SDL_GetTicks();
         /// Check if user wants to quit
         while(SDL_PollEvent(&event))
         {
@@ -67,26 +68,21 @@ bool World::start()
         /// Clean the screen
         SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
 
+        /// Delta time for moving
+        time = (SDL_GetTicks() - delta);
         /// Show up here
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {
-            (*obj)->show(screen);
+            (*obj)->show(screen, time);
         }
+        delta = SDL_GetTicks();
 
         /// Update Screen
         if(SDL_Flip( screen ) == -1)
             return 1;
-
-        /// Increment the frame counter
-        frame++;
-        int time = (SDL_GetTicks() - fps);
-        /// If we want to cap the frame rate
-        if( ( cap == true ) && ( time < 1000 / FRAMES_PER_SECOND ) )
-        {
-            /// Sleep the remaining frame time
-            SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - time );
-        }
     }
+
+    return 0;
 }
 
 void World::addObject(Object* temp)

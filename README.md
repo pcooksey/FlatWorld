@@ -4,5 +4,7 @@ Basically, I wanted to build a simple platform that I can abstract away the grap
 agents. Hopefully, I can get to that point in the near future.
 
 <ol>
+<li>Project is built in CodeBlocks environment</li>
 <li>The program is coded in C++ and uses SDL as its graphic library.</li>
+<li>Linker setting <code> -lmingw32 -lSDLmain -lSDL</code></li>
 </ol>

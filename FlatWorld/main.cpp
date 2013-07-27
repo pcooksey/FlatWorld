@@ -9,6 +9,6 @@ int main( int argc, char* args[] )
         return 1;
     Object temp;
     world.addObject(&temp);
-    world.start();
+    world.getStart();
     return 0;
 }

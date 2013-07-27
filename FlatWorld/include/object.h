@@ -18,8 +18,8 @@ class Object
         Object();
         virtual ~Object();
 
-        int Getx() { return x; }
-        int Gety() { return y; }
+        float Getx() { return x; }
+        float Gety() { return y; }
 
         /** Object should observe @world
             and set @xVel, @yVel */
@@ -27,24 +27,24 @@ class Object
 
         /** Shows the object in the world
             and moves it based on the velocities */
-        void show(SDL_Surface* world);
+        void show(SDL_Surface* world, Uint32 deltaTicks);
 
     protected:
         /** Setting the velocities will change
             the position of the object in @show */
-        void SetxVel(int val) { xVel = val; }
-        void SetyVel(int val) { yVel = val; }
+        void SetxVel(float val) { xVel = val; }
+        void SetyVel(float val) { yVel = val; }
 
     private:
         /** Velocities of the object
             Change through the setters */
-        int xVel, yVel;
+        float xVel, yVel;
 
         /** Position of the object
             !Can't change manually */
-        int x, y;
+        float x, y;
 
-        SDL_Surface* body = NULL;
+        SDL_Surface* body;
 };
 
 #endif // OBJECT_H

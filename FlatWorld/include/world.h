@@ -19,16 +19,17 @@ class World
     public:
         World();
         virtual ~World();
-        bool start();
         bool successful() { return success; };
         void addObject(Object* temp);
+        void getStart();
 
     protected:
     private:
         bool init();
+        int start();
 
-        bool success = false;
-        SDL_Surface* screen = NULL;
+        bool success;
+        SDL_Surface* screen;
         std::list<Object*> objects;
 };
 

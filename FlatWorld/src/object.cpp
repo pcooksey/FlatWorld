@@ -20,23 +20,23 @@ void Object::move(const SDL_Surface* world)
     yVel = 2;
 }
 
-void Object::show(SDL_Surface* world)
+void Object::show(SDL_Surface* world, Uint32 deltaTicks)
 {
     /// Move the object based on x velocity
-    x += xVel;
+    x += xVel * (deltaTicks / 100.f);
     /// If the object went too far to the left or right
     if( ( x < 0 ) || ( x + Object_WIDTH > world->w ) )
         x -= xVel;
 
     /// Move the object based on y velocity
-    y += yVel;
+    y += yVel * (deltaTicks / 100.f);
 
     /// If the object went too far up or down
     if( ( y < 0 ) || ( y + Object_HEIGHT > world->h ) )
         y -= yVel;
 
     /// Show the Object
-    apply_surface( x, y, body, world );
+    apply_surface( (int)x, (int)y, body, world );
 }
 
 void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip)
