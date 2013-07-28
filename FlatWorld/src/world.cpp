@@ -69,19 +69,21 @@ int World::start()
 
     while(true)
     {
-        /// Delta time for moving
+        /// Time (dt) between frames
         time = (SDL_GetTicks() - delta);
-        /// Move within the world here
+
+        /// Move the objects in the world
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {
             (*obj)->move(screen,time);
         }
+        ///Start clock over again
         delta = SDL_GetTicks();
 
         /// Clean the screen
         SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0, 0, 0 ) );
 
-        /// Show up here
+        /// Print the objects onto the world
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {
             (*obj)->show(screen);

@@ -46,7 +46,7 @@ SDL_Surface* Object::setBody()
     return load_image("square.bmp");
 }
 
-void Object::show(SDL_Surface* world)
+void Object::show(SDL_Surface* world) const
 {
     /// Show the Object
     apply_surface( (int)x, (int)y, body, world );

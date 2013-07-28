@@ -17,7 +17,7 @@ class World
     public:
         World();
         virtual ~World();
-        bool successful() { return success; };
+        bool successful() const { return success; };
         void addObject(Object* temp);
         void getStart();
 

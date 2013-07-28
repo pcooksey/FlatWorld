@@ -9,8 +9,8 @@
 const int Object_WIDTH = 20;
 const int Object_HEIGHT = 20;
 
-void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL);
-SDL_Surface *load_image( std::string filename );
+static void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL);
+static SDL_Surface *load_image( std::string filename );
 
 class Object
 {
@@ -18,15 +18,15 @@ class Object
         Object();
         virtual ~Object();
 
-        float Getx() { return x; }
-        float Gety() { return y; }
+        float Getx() const { return x; }
+        float Gety() const { return y; }
 
         /** Object will move after @look */
         void move(const SDL_Surface* world, const Uint32& deltaTicks);
 
         /** Shows the object in the world
             and moves it based on the velocities */
-        void show(SDL_Surface* world);
+        void show(SDL_Surface* world) const;
 
     protected:
         /** Setting the velocities will change
