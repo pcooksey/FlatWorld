@@ -17,18 +17,28 @@ Object::~Object()
 void Object::move(const SDL_Surface* world, const Uint32& deltaTicks)
 {
     look(world);
+    if (x < 0 && xVel < 0)
+    {
+        xVel = -xVel;
+    }
+    if (y + Object_HEIGHT > world->h && yVel > 0)
+    {
+        yVel = -yVel;
+    }
+    if (x + Object_WIDTH > world->w && xVel > 0)
+    {
+        xVel = -xVel;
+    }
+    if (y < 0 && yVel < 0)
+    {
+        yVel = -yVel;
+    }
+
     /// Move the object based on x velocity
     x += xVel * (deltaTicks / 100.f);
-    /// If the object went too far to the left or right
-    if( ( x < 0 ) || ( x + Object_WIDTH > world->w ) )
-        x -= xVel * (deltaTicks / 100.f);
 
     /// Move the object based on y velocity
     y += yVel * (deltaTicks / 100.f);
-
-    /// If the object went too far up or down
-    if( ( y < 0 ) || ( y + Object_HEIGHT > world->h ) )
-        y -= yVel* (deltaTicks / 100.f);
 }
 
 SDL_Surface* Object::setBody()

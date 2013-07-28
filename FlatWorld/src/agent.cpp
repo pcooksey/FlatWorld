@@ -2,7 +2,8 @@
 
 Agent::Agent()
 {
-    //ctor
+    this->SetxVel(8);
+    this->SetyVel(8);
 }
 
 Agent::~Agent()
@@ -12,6 +13,5 @@ Agent::~Agent()
 
 void Agent::look(const SDL_Surface* world)
 {
-    this->SetxVel(4);
-    this->SetyVel(4);
+
 }
