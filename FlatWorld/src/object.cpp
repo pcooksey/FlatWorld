@@ -6,7 +6,7 @@ Object::Object()
     y = 0;
     xVel = 0;
     yVel = 0;
-    body = load_image("square.bmp");
+    body = setBody();
 }
 
 Object::~Object()
@@ -16,11 +16,16 @@ Object::~Object()
 
 void Object::move(const SDL_Surface* world)
 {
-    xVel = 2;
-    yVel = 2;
+    xVel = 4;
+    yVel = 4;
 }
 
-void Object::show(SDL_Surface* world, Uint32 deltaTicks)
+SDL_Surface* Object::setBody()
+{
+    return load_image("square.bmp");
+}
+
+void Object::show(SDL_Surface* world, const Uint32& deltaTicks)
 {
     /// Move the object based on x velocity
     x += xVel * (deltaTicks / 100.f);

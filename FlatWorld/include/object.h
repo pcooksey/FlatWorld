@@ -27,13 +27,16 @@ class Object
 
         /** Shows the object in the world
             and moves it based on the velocities */
-        void show(SDL_Surface* world, Uint32 deltaTicks);
+        void show(SDL_Surface* world, const Uint32& deltaTicks);
 
     protected:
         /** Setting the velocities will change
             the position of the object in @show */
         void SetxVel(float val) { xVel = val; }
         void SetyVel(float val) { yVel = val; }
+
+        /** Create the body of your object */
+        virtual SDL_Surface* setBody();
 
     private:
         /** Velocities of the object
