@@ -49,7 +49,7 @@ void Neuron::updateInputWeights(Layer &prevLayer)
             * neuron.getOutputVal()
             * m_gradient
             // Also add momentum = a fraction of the previous delta weight
-            * alpha
+            + alpha
             * oldDeltaWeight;
 
         neuron.m_outputWeights[m_myIndex].deltaWeight = newDeltaWeight;

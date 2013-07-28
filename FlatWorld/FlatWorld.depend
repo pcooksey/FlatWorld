@@ -1,9 +1,13 @@
 # depslib dependency file v1.0
-1374981106 source:c:\users\pcooksey\documents\github\flatworld\flatworld\main.cpp
+1375056905 source:c:\users\pcooksey\documents\github\flatworld\flatworld\main.cpp
 	"SDL/SDL.h"
 	"include\world.h"
 	"include\agent.h"
-	<string.h>
+	"include\ANN\neuralnet.h"
+	<string>
+	<cstdlib>
+	<time.h>
+	<vector>
 
 1375041455 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
 	"SDL/SDL.h"
@@ -24,19 +28,19 @@
 	<ctime>
 	<limits>
 
-1375051305 c:\users\pcooksey\documents\github\flatworld\flatworld\include\agent.h
+1375054724 c:\users\pcooksey\documents\github\flatworld\flatworld\include\agent.h
 	"object.h"
 	"ANN/NeuralNet.h"
 	<iostream>
 	<vector>
 
-1375048299 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
+1375056752 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
 	"..\include\agent.h"
 
-1375046688 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\neuralnet.cpp
+1375057475 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\neuralnet.cpp
 	"../../include/ANN/neuralnet.h"
 
-1375050246 c:\users\pcooksey\documents\github\flatworld\flatworld\include\ann\neuralnet.h
+1375057488 c:\users\pcooksey\documents\github\flatworld\flatworld\include\ann\neuralnet.h
 	<vector>
 	<cstdlib>
 	<cassert>

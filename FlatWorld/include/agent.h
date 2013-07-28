@@ -23,6 +23,8 @@ class Agent : public Object
         std::vector<double> inputValues;
         std::vector<double> targetValues;
         std::vector<double> resultValues;
+        float prevXvel;
+        float prevYvel;
         unsigned frame;
         NeuralNet network;
 };

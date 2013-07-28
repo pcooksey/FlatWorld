@@ -30,7 +30,7 @@ class Neuron
         void updateInputWeights(Layer &prevLayer);
 
     private:
-        static const double eta = 0.25; // [0.0..1.0] overall net training rate
+        static const double eta = 0.15; // [0.0..1.0] overall net training rate
         static const double alpha = 0.5; // [0.0..n] multiplier of last weight change
         static double randomWeight() { return rand()/double(RAND_MAX); };
         static double transferFunction(double x);
@@ -59,7 +59,7 @@ class NeuralNet
         std::vector<Layer> m_layers; //layer[layerNum][neuronNum]
         double m_error;
         double m_recentAverageError;
-        double m_recentAverageSmoothingFactor;
+        static const double m_recentAverageSmoothingFactor = 100; // Number of training samples to average over
 };
 
 #endif // NEURALNET_H
