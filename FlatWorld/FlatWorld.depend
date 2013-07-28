@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1374979376 source:c:\users\pcooksey\documents\github\flatworld\flatworld\main.cpp
+1374981106 source:c:\users\pcooksey\documents\github\flatworld\flatworld\main.cpp
 	"SDL/SDL.h"
 	"include\world.h"
+	"include\agent.h"
 	<string.h>
 
 1374980518 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
@@ -22,4 +23,10 @@
 	<string>
 	<ctime>
 	<limits>
+
+1374981009 c:\users\pcooksey\documents\github\flatworld\flatworld\include\agent.h
+	"object.h"
+
+1374981069 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
+	"..\include\agent.h"
 

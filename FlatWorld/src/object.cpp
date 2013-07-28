@@ -21,14 +21,14 @@ void Object::move(const SDL_Surface* world, const Uint32& deltaTicks)
     x += xVel * (deltaTicks / 100.f);
     /// If the object went too far to the left or right
     if( ( x < 0 ) || ( x + Object_WIDTH > world->w ) )
-        x -= xVel;
+        x -= xVel * (deltaTicks / 100.f);
 
     /// Move the object based on y velocity
     y += yVel * (deltaTicks / 100.f);
 
     /// If the object went too far up or down
     if( ( y < 0 ) || ( y + Object_HEIGHT > world->h ) )
-        y -= yVel;
+        y -= yVel* (deltaTicks / 100.f);
 }
 
 SDL_Surface* Object::setBody()
