@@ -30,8 +30,8 @@ class Neuron
         void updateInputWeights(Layer &prevLayer);
 
     private:
-        static double eta; // [0.0..1.0] overall net training rate
-        static double alpha; // [0.0..n] multiplier of last weight change
+        static const double eta = 0.25; // [0.0..1.0] overall net training rate
+        static const double alpha = 0.5; // [0.0..n] multiplier of last weight change
         static double randomWeight() { return rand()/double(RAND_MAX); };
         static double transferFunction(double x);
         static double transferFunctionDerivative(double x);
@@ -41,9 +41,6 @@ class Neuron
         double m_gradient;
         std::vector<Connection> m_outputWeights;
 };
-
-double Neuron::eta = 0.15;
-double Neuron::alpha = 0.5;
 
 // ************** class NeuralNet ****************
 
@@ -56,6 +53,7 @@ class NeuralNet
         void feedForward(const std::vector<double> &inputVals);
         void backProp(const std::vector<double> &targetVals);
         void getResults(std::vector<double> &resultVals) const;
+        double getRecentAverageError() const { return m_recentAverageError; }
     protected:
     private:
         std::vector<Layer> m_layers; //layer[layerNum][neuronNum]

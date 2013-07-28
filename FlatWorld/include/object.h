@@ -20,6 +20,8 @@ class Object
 
         float Getx() const { return x; }
         float Gety() const { return y; }
+        float GetxVel() const { return xVel; }
+        float GetyVel() const { return yVel; }
 
         /** Object will move after @look */
         void move(const SDL_Surface* world, const Uint32& deltaTicks);

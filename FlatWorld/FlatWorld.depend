@@ -18,21 +18,27 @@
 1375041532 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\object.cpp
 	"..\include\object.h"
 
-1375041604 c:\users\pcooksey\documents\github\flatworld\flatworld\include\object.h
+1375048765 c:\users\pcooksey\documents\github\flatworld\flatworld\include\object.h
 	"SDL\SDL.h"
 	<string>
 	<ctime>
 	<limits>
 
-1374981009 c:\users\pcooksey\documents\github\flatworld\flatworld\include\agent.h
+1375051305 c:\users\pcooksey\documents\github\flatworld\flatworld\include\agent.h
 	"object.h"
+	"ANN/NeuralNet.h"
+	<iostream>
+	<vector>
 
-1375039535 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
+1375048299 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
 	"..\include\agent.h"
 
-1375042667 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\neuralnet.cpp
+1375046688 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\neuralnet.cpp
 	"../../include/ANN/neuralnet.h"
 
-1375042979 c:\users\pcooksey\documents\github\flatworld\flatworld\include\ann\neuralnet.h
+1375050246 c:\users\pcooksey\documents\github\flatworld\flatworld\include\ann\neuralnet.h
 	<vector>
+	<cstdlib>
+	<cassert>
+	<cmath>
 
