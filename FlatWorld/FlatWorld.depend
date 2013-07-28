@@ -30,3 +30,9 @@
 1375039535 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
 	"..\include\agent.h"
 
+1375042667 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\neuralnet.cpp
+	"../../include/ANN/neuralnet.h"
+
+1375042979 c:\users\pcooksey\documents\github\flatworld\flatworld\include\ann\neuralnet.h
+	<vector>
+
