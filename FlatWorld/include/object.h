@@ -21,19 +21,22 @@ class Object
         float Getx() { return x; }
         float Gety() { return y; }
 
-        /** Object should observe @world
-            and set @xVel, @yVel */
-        virtual void move(const SDL_Surface* world);
+        /** Object will move after @look */
+        void move(const SDL_Surface* world, const Uint32& deltaTicks);
 
         /** Shows the object in the world
             and moves it based on the velocities */
-        void show(SDL_Surface* world, const Uint32& deltaTicks);
+        void show(SDL_Surface* world);
 
     protected:
         /** Setting the velocities will change
             the position of the object in @show */
         void SetxVel(float val) { xVel = val; }
         void SetyVel(float val) { yVel = val; }
+
+        /** Object should observe @world
+            and set @xVel, @yVel */
+        virtual void look(const SDL_Surface* world) = 0;
 
         /** Create the body of your object */
         virtual SDL_Surface* setBody();
@@ -47,6 +50,10 @@ class Object
             !Can't change manually */
         float x, y;
 
+        /** Will determine forces acting on the body */
+        float sizeOfBody;
+
+        /** Body is by default a square but can be changed */
         SDL_Surface* body;
 };
 

@@ -14,19 +14,9 @@ Object::~Object()
     SDL_FreeSurface(body);
 }
 
-void Object::move(const SDL_Surface* world)
+void Object::move(const SDL_Surface* world, const Uint32& deltaTicks)
 {
-    xVel = 4;
-    yVel = 4;
-}
-
-SDL_Surface* Object::setBody()
-{
-    return load_image("square.bmp");
-}
-
-void Object::show(SDL_Surface* world, const Uint32& deltaTicks)
-{
+    look(world);
     /// Move the object based on x velocity
     x += xVel * (deltaTicks / 100.f);
     /// If the object went too far to the left or right
@@ -39,7 +29,15 @@ void Object::show(SDL_Surface* world, const Uint32& deltaTicks)
     /// If the object went too far up or down
     if( ( y < 0 ) || ( y + Object_HEIGHT > world->h ) )
         y -= yVel;
+}
 
+SDL_Surface* Object::setBody()
+{
+    return load_image("square.bmp");
+}
+
+void Object::show(SDL_Surface* world)
+{
     /// Show the Object
     apply_surface( (int)x, (int)y, body, world );
 }

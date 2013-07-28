@@ -2,6 +2,7 @@
 #define WORLD_H
 
 #include "SDL/SDL.h"
+#include "SDL/SDL_thread.h"
 #include "object.h"
 #include <string>
 #include <list>
@@ -24,6 +25,7 @@ class World
     private:
         bool init();
         int start();
+        static int starter(void *data);
 
         bool success;
         SDL_Surface* screen;

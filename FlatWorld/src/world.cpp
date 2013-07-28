@@ -37,17 +37,8 @@ bool World::init()
 
 void World::getStart()
 {
-    start();
-}
-
-int World::start()
-{
     bool quit = false;
-    /// The frame rate regulator
-    int delta = SDL_GetTicks(), time;
-    /// Object iterator
-    std::list<Object*>::iterator obj;
-
+    SDL_Thread *thread = SDL_CreateThread( starter, this );
     SDL_Event event;
     while(!quit)
     {
@@ -57,25 +48,44 @@ int World::start()
             if(event.type == SDL_QUIT)
             {
                 quit = true;
+                /// Stop the thread
+                SDL_KillThread( thread );
             }
         }
+    }
+}
+
+int World::starter(void *data)
+{
+    return ((World*)data)->start();
+}
+
+int World::start()
+{
+    /// The frame rate regulator
+    int delta = SDL_GetTicks(), time;
+    /// Object iterator
+    std::list<Object*>::iterator obj;
+
+    while(true)
+    {
+        /// Delta time for moving
+        time = (SDL_GetTicks() - delta);
         /// Move within the world here
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {
-            (*obj)->move(screen);
+            (*obj)->move(screen,time);
         }
+        delta = SDL_GetTicks();
 
         /// Clean the screen
-        SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
+        SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0, 0, 0 ) );
 
-        /// Delta time for moving
-        time = (SDL_GetTicks() - delta);
         /// Show up here
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {
-            (*obj)->show(screen, time);
+            (*obj)->show(screen);
         }
-        delta = SDL_GetTicks();
 
         /// Update Screen
         if(SDL_Flip( screen ) == -1)
