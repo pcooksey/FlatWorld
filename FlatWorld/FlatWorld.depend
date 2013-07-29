@@ -1,13 +1,11 @@
 # depslib dependency file v1.0
-1375056905 source:c:\users\pcooksey\documents\github\flatworld\flatworld\main.cpp
+1375057829 source:c:\users\pcooksey\documents\github\flatworld\flatworld\main.cpp
 	"SDL/SDL.h"
 	"include\world.h"
 	"include\agent.h"
-	"include\ANN\neuralnet.h"
 	<string>
 	<cstdlib>
 	<time.h>
-	<vector>
 
 1375041455 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
 	"SDL/SDL.h"
@@ -28,7 +26,7 @@
 	<ctime>
 	<limits>
 
-1375054724 c:\users\pcooksey\documents\github\flatworld\flatworld\include\agent.h
+1375058481 c:\users\pcooksey\documents\github\flatworld\flatworld\include\agent.h
 	"object.h"
 	"ANN/NeuralNet.h"
 	<iostream>
