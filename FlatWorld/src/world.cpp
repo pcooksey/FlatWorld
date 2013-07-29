@@ -9,8 +9,8 @@ World::World()
 
 World::~World()
 {
-    /// Quit SDL
-    SDL_Quit();
+    SDL_DestroySemaphore( runLock ); //Destroy semaphore
+    SDL_Quit(); //Quit SDL
 }
 
 bool World::init()

@@ -15,8 +15,8 @@ void Agent::look(const SDL_Surface* world)
 {
     // Simple try to teach a ANN to go only forward
     inputValues.clear();
-    inputValues.push_back(GetxVel());
-    inputValues.push_back(GetyVel());
+    inputValues.push_back(GetxVel()*8);
+    inputValues.push_back(GetyVel()*8);
 
     network.feedForward(inputValues);
     std::cout<<"Input: "<<inputValues[0]<<" : "<<inputValues[1]<<std::endl;
