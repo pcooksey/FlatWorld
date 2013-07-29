@@ -24,6 +24,7 @@ class Agent : public Object
         std::vector<double> targetValues;
         std::vector<double> resultValues;
 
+        double fitness;
         NeuralNet network;
 };
 

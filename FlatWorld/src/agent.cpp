@@ -3,7 +3,7 @@
 Agent::Agent(int x, int y)
     :Object(x,y), network(topology)
 {
-
+    fitness = 0;
 }
 
 Agent::~Agent()
