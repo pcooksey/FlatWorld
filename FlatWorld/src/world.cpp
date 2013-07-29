@@ -26,6 +26,9 @@ bool World::init()
     if( screen == NULL )
         return false;
 
+    ///Create the semaphore
+    runLock = SDL_CreateSemaphore( 1 );
+
     /// Set the window caption
     SDL_WM_SetCaption( "Flat World", NULL );
 
@@ -36,6 +39,7 @@ bool World::init()
 void World::getStart()
 {
     bool quit = false;
+    running = true;
     SDL_Thread *thread = SDL_CreateThread( starter, this );
     SDL_Event event;
     while(!quit)
@@ -46,9 +50,8 @@ void World::getStart()
             if(event.type == SDL_QUIT)
             {
                 quit = true;
-                /// Stop the thread
-                SDL_KillThread( thread );
-                return;
+                setRunning(false); // Stop the thread
+                SDL_WaitThread( thread, NULL ); //Waits for thread to end
             }
         }
     }
@@ -66,7 +69,7 @@ int World::start()
     /// Object iterator
     std::list<Object*>::iterator obj;
 
-    while(true)
+    while(getRunning())
     {
         /// Time (dt) between frames
         time = (SDL_GetTicks() - delta);
@@ -97,6 +100,21 @@ int World::start()
     }
 
     return 0;
+}
+
+void World::setRunning(bool run)
+{
+    SDL_SemWait( runLock ); //Lock
+    running = run;
+    SDL_SemPost( runLock ); //unlock
+}
+
+bool World::getRunning()
+{
+    SDL_SemWait( runLock ); //Lock
+    bool run = running;
+    SDL_SemPost( runLock ); //unlock
+    return run;
 }
 
 void World::addObject(Object* temp)

@@ -32,7 +32,15 @@ class World
         static int starter(void *data);
         void collisionDetection(int time);
 
+        void setRunning(bool run);
+        bool getRunning();
+
+        /// Is true when the init was successful
         bool success;
+        /// Is true when start is running
+        bool running;
+        ///The protective semaphore for running
+        SDL_sem *runLock;
         SDL_Surface* screen;
         std::list<Object*> objects;
 };
