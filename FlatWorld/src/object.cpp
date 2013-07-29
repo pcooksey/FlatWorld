@@ -1,9 +1,9 @@
 #include "..\include\object.h"
 
-Object::Object()
+Object::Object(int x, int y)
 {
-    x = 0;
-    y = 0;
+    this->x = x;
+    this->y = y;
     xVel = 0;
     yVel = 0;
     body = setBody();
@@ -16,7 +16,6 @@ Object::~Object()
 
 void Object::move(const SDL_Surface* world, const Uint32& deltaTicks)
 {
-    look(world);
     if (x < 0 && xVel < 0)
     {
         xVel = -xVel;
@@ -39,6 +38,10 @@ void Object::move(const SDL_Surface* world, const Uint32& deltaTicks)
 
     /// Move the object based on y velocity
     y += yVel * (deltaTicks / 100.f);
+
+    /// Must look after position gets changed because of collision
+    /// detection might change the velocity of the object
+    look(world);
 }
 
 SDL_Surface* Object::setBody()

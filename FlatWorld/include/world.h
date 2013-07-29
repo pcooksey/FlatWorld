@@ -7,10 +7,14 @@
 #include <string>
 #include <list>
 
-/// The attributes of the screen
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
-const int SCREEN_BPP = 32;
+namespace Screen {
+    /// The attributes of the screen
+    const int SCREEN_WIDTH = 640;
+    const int SCREEN_HEIGHT = 480;
+    const int SCREEN_BPP = 32;
+}
+
+using namespace Screen;
 
 class World
 {

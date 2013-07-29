@@ -69,9 +69,10 @@ int World::start()
 
     while(true)
     {
+        ///Check for future collisions here
+
         /// Time (dt) between frames
         time = (SDL_GetTicks() - delta);
-
         /// Move the objects in the world
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {

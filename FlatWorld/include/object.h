@@ -15,7 +15,7 @@ static SDL_Surface *load_image( std::string filename );
 class Object
 {
     public:
-        Object();
+        Object(int x, int y);
         virtual ~Object();
 
         float Getx() const { return x; }

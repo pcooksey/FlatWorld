@@ -8,13 +8,13 @@
 #include <vector>
 
 
-static int ints[] = {2,2};
+static int ints[] = {2,3,2};
 static std::vector<unsigned> topology (ints, ints + sizeof(ints) / sizeof(int) );
 
 class Agent : public Object
 {
     public:
-        Agent();
+        Agent(int x, int y);
         virtual ~Agent();
     protected:
     private:

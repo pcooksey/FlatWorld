@@ -12,8 +12,12 @@ int main( int argc, char* args[] )
     World world;
     if(world.successful()==false)
         return 1;
-    Agent temp;
+    Agent temp(rand()%Screen::SCREEN_WIDTH, rand()%Screen::SCREEN_HEIGHT);
+    Agent temp2(rand()%Screen::SCREEN_WIDTH, rand()%Screen::SCREEN_HEIGHT);
+    Agent temp3(rand()%Screen::SCREEN_WIDTH, rand()%Screen::SCREEN_HEIGHT);
     world.addObject(&temp);
+    world.addObject(&temp2);
+    world.addObject(&temp3);
     world.getStart();
     return 0;
 }

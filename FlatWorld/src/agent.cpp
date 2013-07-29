@@ -1,7 +1,7 @@
 #include "..\include\agent.h"
 
-Agent::Agent()
-    :network(topology)
+Agent::Agent(int x, int y)
+    :Object(x,y), network(topology)
 {
 
 }
