@@ -9,6 +9,11 @@ World::World()
 
 World::~World()
 {
+    for(std::list<Object*>::iterator it=objects.begin(); it!=objects.end(); ++it)
+    {
+        delete (*it);
+    }
+
     SDL_DestroySemaphore( runLock ); //Destroy semaphore
     SDL_Quit(); //Quit SDL
 }

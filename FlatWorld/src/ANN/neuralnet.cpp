@@ -101,6 +101,26 @@ NeuralNet::NeuralNet(const std::vector<unsigned> &topology)
     }
 }
 
+NeuralNet::NeuralNet(const std::vector<unsigned> &topology, const std::vector<double> &net)
+:NeuralNet(topology)
+{
+    std::vector<double>::const_iterator it = net.begin();
+    // The size of the neural network
+    unsigned numLayers = topology.size();
+    for(unsigned layerNum = 0; layerNum<numLayers; ++layerNum)
+    {
+        unsigned numOutputs = layerNum == topology.size() -1 ? 0 : topology[layerNum + 1];
+        for(unsigned neuronNum = 0; neuronNum <= topology[layerNum]; ++neuronNum)
+        {
+            for(unsigned weight = 0; weight < numOutputs; ++weight)
+            {
+                m_layers[numLayers][neuronNum].m_outputWeights[weight].weight=(*it);
+                ++it;
+            }
+        }
+    }
+}
+
 NeuralNet::~NeuralNet()
 {
     //dtor
@@ -190,4 +210,23 @@ void NeuralNet::getResults(std::vector<double> &resultVals) const
     {
         resultVals.push_back(m_layers.back()[n].getOutputVal());
     }
+}
+
+std::vector<double> NeuralNet::getDNA()
+{
+    std::vector<double> DNA;
+    // The size of the neural network
+    unsigned numLayers = m_layers.size();
+    for(unsigned layerNum = 0; layerNum<numLayers; ++layerNum)
+    {
+        for(unsigned neuronNum = 0; neuronNum <= m_layers[layerNum].size(); ++neuronNum)
+        {
+            unsigned numOutputs = layerNum == m_layers.size() -1 ? 0 : m_layers[layerNum + 1].size();
+            for(unsigned weight = 0; weight < numOutputs; ++weight)
+            {
+                DNA.push_back(m_layers[numLayers][neuronNum].m_outputWeights[weight].weight);
+            }
+        }
+    }
+    return DNA;
 }

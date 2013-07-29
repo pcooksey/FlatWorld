@@ -13,8 +13,10 @@ struct Connection
 };
 
 class Neuron;
+class NeuralNet;
 
 typedef std::vector<Neuron> Layer;
+typedef std::vector<double> Weights;
 
 // ************** class Neuron *******************
 
@@ -40,6 +42,8 @@ class Neuron
         unsigned m_myIndex;
         double m_gradient;
         std::vector<Connection> m_outputWeights;
+
+        friend class NeuralNet;
 };
 
 // ************** class NeuralNet ****************
@@ -48,12 +52,16 @@ class NeuralNet
 {
     public:
         NeuralNet(const std::vector<unsigned> &topology);
+        NeuralNet(const std::vector<unsigned> &topology, const std::vector<double> &net);
         virtual ~NeuralNet();
 
         void feedForward(const std::vector<double> &inputVals);
         void backProp(const std::vector<double> &targetVals);
         void getResults(std::vector<double> &resultVals) const;
         double getRecentAverageError() const { return m_recentAverageError; }
+        const std::vector<Layer>& getNet() { return m_layers; }
+        std::vector<double> getDNA();
+
     protected:
     private:
         std::vector<Layer> m_layers; //layer[layerNum][neuronNum]
