@@ -5,9 +5,11 @@
 #include <ctime>
 #include <limits>
 
-/// The attributes of the object
-const int Object_WIDTH = 20;
-const int Object_HEIGHT = 20;
+namespace ObjectBody {
+    /// The attributes of the object
+    const int Object_WIDTH = 20;
+    const int Object_HEIGHT = 20;
+}
 
 static void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL);
 static SDL_Surface *load_image( std::string filename );
@@ -23,6 +25,11 @@ class Object
         float GetxVel() const { return xVel; }
         float GetyVel() const { return yVel; }
 
+        /** Setting the velocities will change
+            the position of the object in @show */
+        void SetxVel(float val) { xVel = val; }
+        void SetyVel(float val) { yVel = val; }
+
         /** Object will move after @look */
         void move(const SDL_Surface* world, const Uint32& deltaTicks);
 
@@ -31,11 +38,6 @@ class Object
         void show(SDL_Surface* world) const;
 
     protected:
-        /** Setting the velocities will change
-            the position of the object in @show */
-        void SetxVel(float val) { xVel = val; }
-        void SetyVel(float val) { yVel = val; }
-
         /** Object should observe @world
             and set @xVel, @yVel */
         virtual void look(const SDL_Surface* world) = 0;

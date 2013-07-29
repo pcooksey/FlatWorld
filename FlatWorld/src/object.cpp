@@ -20,11 +20,11 @@ void Object::move(const SDL_Surface* world, const Uint32& deltaTicks)
     {
         xVel = -xVel;
     }
-    if (y + Object_HEIGHT > world->h && yVel > 0)
+    if (y + ObjectBody::Object_HEIGHT > world->h && yVel > 0)
     {
         yVel = -yVel;
     }
-    if (x + Object_WIDTH > world->w && xVel > 0)
+    if (x + ObjectBody::Object_WIDTH > world->w && xVel > 0)
     {
         xVel = -xVel;
     }

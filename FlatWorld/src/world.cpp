@@ -69,10 +69,12 @@ int World::start()
 
     while(true)
     {
-        ///Check for future collisions here
-
         /// Time (dt) between frames
         time = (SDL_GetTicks() - delta);
+
+        ///Check for future collisions here
+        collisionDetection(time);
+
         /// Move the objects in the world
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {
@@ -101,4 +103,25 @@ int World::start()
 void World::addObject(Object* temp)
 {
     objects.push_back(temp);
+}
+
+void World::collisionDetection(int time)
+{
+    /// Object iterator
+    std::list<Object*>::iterator obj, check;
+    for(obj = objects.begin(); obj!=objects.end(); ++obj)
+    {
+        for(check = objects.end(); check!=obj; --check)
+        {
+            if( (*obj)->Gety() + ObjectBody::Object_HEIGHT <= (*check)->Gety()
+                || (*obj)->Gety() >= (*check)->Gety() + ObjectBody::Object_HEIGHT
+                || (*obj)->Getx() + ObjectBody::Object_WIDTH <= (*check)->Getx()
+                || (*obj)->Getx() >= (*check)->Getx() + ObjectBody::Object_WIDTH )
+            {} else {
+                (*obj)->SetxVel(0);
+                (*obj)->SetyVel(0);
+                break;
+            }
+        }
+    }
 }

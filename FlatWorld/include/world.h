@@ -30,6 +30,7 @@ class World
         bool init();
         int start();
         static int starter(void *data);
+        void collisionDetection(int time);
 
         bool success;
         SDL_Surface* screen;
