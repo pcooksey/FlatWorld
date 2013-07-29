@@ -9,8 +9,6 @@ World::World()
 
 World::~World()
 {
-    /// Free the loaded image
-    SDL_FreeSurface( screen );
     /// Quit SDL
     SDL_Quit();
 }
@@ -50,6 +48,7 @@ void World::getStart()
                 quit = true;
                 /// Stop the thread
                 SDL_KillThread( thread );
+                return;
             }
         }
     }
@@ -109,18 +108,27 @@ void World::collisionDetection(int time)
 {
     /// Object iterator
     std::list<Object*>::iterator obj, check;
+    int objx, objy, checkx, checky;
     for(obj = objects.begin(); obj!=objects.end(); ++obj)
     {
+        objx = (*obj)->Getx() + (*obj)->GetxVel() * (time / 100.f);
+        objy = (*obj)->Gety() + (*obj)->GetyVel() * (time / 100.f);
         for(check = objects.end(); check!=obj; --check)
         {
-            if( (*obj)->Gety() + ObjectBody::Object_HEIGHT <= (*check)->Gety()
-                || (*obj)->Gety() >= (*check)->Gety() + ObjectBody::Object_HEIGHT
-                || (*obj)->Getx() + ObjectBody::Object_WIDTH <= (*check)->Getx()
-                || (*obj)->Getx() >= (*check)->Getx() + ObjectBody::Object_WIDTH )
+            checkx = (*check)->Getx() + (*check)->GetxVel() * (time / 100.f);
+            checky = (*check)->Gety() + (*check)->GetyVel() * (time / 100.f);
+
+            if( objy + ObjectBody::Object_HEIGHT <= checky
+                || objy >= checky + ObjectBody::Object_HEIGHT
+                || objx + ObjectBody::Object_WIDTH <= checkx
+                || objx >= checkx + ObjectBody::Object_WIDTH )
             {} else {
-                (*obj)->SetxVel(0);
-                (*obj)->SetyVel(0);
-                break;
+                int xVel = (*obj)->GetxVel();
+                int yVel = (*obj)->GetyVel();
+                (*obj)->SetxVel((*check)->GetxVel());
+                (*obj)->SetyVel((*check)->GetyVel());
+                (*check)->SetxVel(xVel);
+                (*check)->SetyVel(yVel);
             }
         }
     }

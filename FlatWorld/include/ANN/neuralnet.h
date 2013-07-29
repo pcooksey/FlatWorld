@@ -32,7 +32,7 @@ class Neuron
     private:
         static const double eta = 0.15; // [0.0..1.0] overall net training rate
         static const double alpha = 0.5; // [0.0..n] multiplier of last weight change
-        static double randomWeight() { return rand()/double(RAND_MAX); };
+        static double randomWeight() { return (rand()/(double(RAND_MAX)/2))-1; };
         static double transferFunction(double x);
         static double transferFunctionDerivative(double x);
         double sumDOW(const Layer &nextLayer) const;

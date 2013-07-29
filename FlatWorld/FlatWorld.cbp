@@ -9,7 +9,7 @@
 			<Target title="Debug">
 				<Option output="bin/Debug/FlatWorld" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
-				<Option type="1" />
+				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
@@ -31,6 +31,17 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/ANN/neuralnet.h" />
+		<Unit filename="include/agent.h" />
+		<Unit filename="include/object.h" />
+		<Unit filename="include/world.h" />
+		<Unit filename="main.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ANN/neuralnet.cpp" />
+		<Unit filename="src/agent.cpp" />
+		<Unit filename="src/object.cpp" />
+		<Unit filename="src/world.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
