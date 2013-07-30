@@ -8,8 +8,6 @@
 
 namespace ObjectBody {
     /// The attributes of the object
-    const int Object_WIDTH = 20;
-    const int Object_HEIGHT = 20;
     enum Type {ALIVE, DIED, INANIMATE};
 }
 
@@ -19,13 +17,17 @@ SDL_Surface *load_image( std::string filename );
 class Object
 {
     public:
-        Object(int x, int y);
+        Object(const int &x, const int &y);
         virtual ~Object();
 
         float Getx() const { return x; }
         float Gety() const { return y; }
         float GetxVel() const { return xVel; }
         float GetyVel() const { return yVel; }
+
+        /** Height and width of the body */
+        int Object_WIDTH() { return body->w; }
+        int Object_HEIGHT() { return body->h; }
 
         /** Setting the velocities will change
             the position of the object in @show */
@@ -53,7 +55,7 @@ class Object
         virtual void look(const SDL_Surface* world) = 0;
 
         /** Create the body of your object */
-        virtual SDL_Surface* setBody();
+        void setBody(SDL_Surface* body);
 
         bool kill();
 

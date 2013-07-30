@@ -1,13 +1,13 @@
 #include "..\include\object.h"
 
-Object::Object(int x, int y)
+Object::Object(const int &x, const int &y)
 {
     type = ObjectBody::ALIVE;
     this->x = x;
     this->y = y;
     xVel = 0;
     yVel = 0;
-    body = setBody();
+    setBody(load_image("square.bmp"));
 }
 
 Object::~Object()
@@ -21,11 +21,11 @@ void Object::move(const SDL_Surface* world, const Uint32& deltaTicks)
     {
         xVel = -xVel;
     }
-    if (y + ObjectBody::Object_HEIGHT > world->h && yVel > 0)
+    if (y + Object_HEIGHT() > world->h && yVel > 0)
     {
         yVel = -yVel;
     }
-    if (x + ObjectBody::Object_WIDTH > world->w && xVel > 0)
+    if (x + Object_WIDTH() > world->w && xVel > 0)
     {
         xVel = -xVel;
     }
@@ -55,9 +55,9 @@ bool Object::kill()
     return false;
 }
 
-SDL_Surface* Object::setBody()
+void Object::setBody(SDL_Surface* body)
 {
-    return load_image("square.bmp");
+    this->body = body;
 }
 
 void Object::show(SDL_Surface* world) const

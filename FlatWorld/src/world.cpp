@@ -144,10 +144,10 @@ void World::collisionDetection(int time)
             checkx = (*check)->Getx() + (*check)->GetxVel() * (time / 100.f);
             checky = (*check)->Gety() + (*check)->GetyVel() * (time / 100.f);
 
-            if( objy + ObjectBody::Object_HEIGHT <= checky
-                || objy >= checky + ObjectBody::Object_HEIGHT
-                || objx + ObjectBody::Object_WIDTH <= checkx
-                || objx >= checkx + ObjectBody::Object_WIDTH )
+            if( objy + (*obj)->Object_HEIGHT() <= checky
+                || objy >= checky + (*check)->Object_HEIGHT()
+                || objx + (*obj)->Object_WIDTH() <= checkx
+                || objx >= checkx + (*check)->Object_WIDTH() )
             {} else {
                 // Set the velocity of the object to zero
                 (*obj)->SetxVel(0);

@@ -51,7 +51,10 @@ void Agent::collision(Object* obj)
         if (agt != 0)
         {
             // For now just kill the agent (Testing purposes)
-            agt->kill();
+            if(agt->kill())
+            {
+                fitness++;
+            }
         }
     } catch (std::exception& e) {
 

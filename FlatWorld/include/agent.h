@@ -22,8 +22,8 @@ class Agent : public Object
 
     protected:
     private:
-        void look(const SDL_Surface* world);
-        void collision(Object* obj);
+        virtual void look(const SDL_Surface* world);
+        virtual void collision(Object* obj);
 
         std::vector<double> inputValues;
         std::vector<double> targetValues;
