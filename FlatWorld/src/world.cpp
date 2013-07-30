@@ -146,12 +146,18 @@ void World::collisionDetection(int time)
                 || objx + ObjectBody::Object_WIDTH <= checkx
                 || objx >= checkx + ObjectBody::Object_WIDTH )
             {} else {
+                /*
                 int xVel = (*obj)->GetxVel();
                 int yVel = (*obj)->GetyVel();
                 (*obj)->SetxVel((*check)->GetxVel());
                 (*obj)->SetyVel((*check)->GetyVel());
                 (*check)->SetxVel(xVel);
                 (*check)->SetyVel(yVel);
+                */
+                (*obj)->SetxVel(0);
+                (*obj)->SetyVel(0);
+                (*check)->SetxVel(0);
+                (*check)->SetyVel(0);
             }
         }
     }

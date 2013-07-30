@@ -16,6 +16,9 @@ class Agent : public Object
     public:
         Agent(int x, int y);
         virtual ~Agent();
+        double getFitness() { return fitness; }
+        const NeuralNet& getNetwork() { return network; }
+
     protected:
     private:
         void look(const SDL_Surface* world);
