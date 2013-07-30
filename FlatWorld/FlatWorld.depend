@@ -7,32 +7,34 @@
 	<cstdlib>
 	<time.h>
 
-1375192410 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
+1375199051 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
 	"SDL/SDL.h"
 	"SDL/SDL_thread.h"
 	"object.h"
 	<string>
 	<list>
 
-1375126475 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\world.cpp
+1375198867 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\world.cpp
 	"..\include\world.h"
 
-1375192557 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\object.cpp
+1375197031 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\object.cpp
 	"..\include\object.h"
 
-1375110894 c:\users\pcooksey\documents\github\flatworld\flatworld\include\object.h
+1375198762 c:\users\pcooksey\documents\github\flatworld\flatworld\include\object.h
 	"SDL\SDL.h"
+	"object.h"
 	<string>
 	<ctime>
 	<limits>
 
-1375192713 c:\users\pcooksey\documents\github\flatworld\flatworld\include\agent.h
+1375198803 c:\users\pcooksey\documents\github\flatworld\flatworld\include\agent.h
 	"object.h"
 	"ANN/NeuralNet.h"
 	<iostream>
 	<vector>
+	<exception>
 
-1375129247 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
+1375198823 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
 	"..\include\agent.h"
 
 1375125600 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\neuralnet.cpp

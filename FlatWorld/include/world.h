@@ -16,6 +16,8 @@ namespace Screen {
 
 using namespace Screen;
 
+static bool died(Object* obj) { return !obj->alive(); };
+
 class World
 {
     public:

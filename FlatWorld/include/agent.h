@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <vector>
+#include <exception>
 
 
 static int ints[] = {2,3,2};
@@ -22,6 +23,7 @@ class Agent : public Object
     protected:
     private:
         void look(const SDL_Surface* world);
+        void collision(Object* obj);
 
         std::vector<double> inputValues;
         std::vector<double> targetValues;

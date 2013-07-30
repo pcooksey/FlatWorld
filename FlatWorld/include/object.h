@@ -1,6 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 #include "SDL\SDL.h"
+#include "object.h"
 #include <string>
 #include <ctime>
 #include <limits>
@@ -9,10 +10,11 @@ namespace ObjectBody {
     /// The attributes of the object
     const int Object_WIDTH = 20;
     const int Object_HEIGHT = 20;
+    enum Type {ALIVE, DIED, INANIMATE};
 }
 
-static void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL);
-static SDL_Surface *load_image( std::string filename );
+void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL);
+SDL_Surface *load_image( std::string filename );
 
 class Object
 {
@@ -33,9 +35,17 @@ class Object
         /** Object will move after @look */
         void move(const SDL_Surface* world, const Uint32& deltaTicks);
 
+        /** Collision happens when the world
+        *  detects that the object has hit another object */
+        virtual void collision(Object* obj) = 0;
+
         /** Shows the object in the world
             and moves it based on the velocities */
         void show(SDL_Surface* world) const;
+
+        /** World can check if you are alive or inanimate
+            so that is knows if the object needs to be deleted */
+        bool alive() const { return type==ObjectBody::DIED ? false : true; }
 
     protected:
         /** Object should observe @world
@@ -44,6 +54,11 @@ class Object
 
         /** Create the body of your object */
         virtual SDL_Surface* setBody();
+
+        bool kill();
+
+        /** Body type is by default real */
+        ObjectBody::Type type;
 
     private:
         /** Velocities of the object

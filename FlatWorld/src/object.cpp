@@ -2,6 +2,7 @@
 
 Object::Object(int x, int y)
 {
+    type = ObjectBody::ALIVE;
     this->x = x;
     this->y = y;
     xVel = 0;
@@ -42,6 +43,16 @@ void Object::move(const SDL_Surface* world, const Uint32& deltaTicks)
     // Must look after position gets changed because of collision
     // detection might change the velocity of the object
     look(world);
+}
+
+bool Object::kill()
+{
+    if(type==ObjectBody::ALIVE)
+    {
+        type=ObjectBody::DIED;
+        return true;
+    }
+    return false;
 }
 
 SDL_Surface* Object::setBody()

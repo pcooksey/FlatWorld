@@ -37,3 +37,20 @@ void Agent::look(const SDL_Surface* world)
 
     //std::cout <<" Average error: "<< network.getRecentAverageError() <<std::endl<<std::endl;
 }
+
+void Agent::collision(Object* obj)
+{
+    try
+    {
+        // Cast the obj to an agent
+        Agent* agt = dynamic_cast<Agent*>(obj);
+        // if @agt is not zero than it is an agetn
+        if (agt != 0)
+        {
+            // For now just kill the agent (Testing purposes)
+            agt->kill();
+        }
+    } catch (std::exception& e) {
+
+    }
+}
