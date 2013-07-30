@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/ANN/CGenAlg.h" />
 		<Unit filename="include/ANN/neuralnet.h" />
 		<Unit filename="include/agent.h" />
 		<Unit filename="include/object.h" />
@@ -38,6 +39,7 @@
 		<Unit filename="main.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/ANN/CGenAlg.cpp" />
 		<Unit filename="src/ANN/neuralnet.cpp" />
 		<Unit filename="src/agent.cpp" />
 		<Unit filename="src/object.cpp" />

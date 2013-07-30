@@ -40,6 +40,9 @@ void Agent::look(const SDL_Surface* world)
 
 void Agent::collision(Object* obj)
 {
+    // TODO: Idea is to only kill the object if the velocity is towards it
+    // However, this might need to be implement in the world as determining
+    // which object actually collide with the object
     try
     {
         // Cast the obj to an agent
