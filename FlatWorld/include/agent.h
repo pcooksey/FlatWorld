@@ -2,6 +2,7 @@
 #define AGENT_H
 
 #include "object.h"
+#include "plant.h"
 #include "ANN/NeuralNet.h"
 
 #include <iostream>

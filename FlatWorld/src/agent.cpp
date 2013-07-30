@@ -45,13 +45,13 @@ void Agent::collision(Object* obj)
     // which object actually collide with the object
     try
     {
-        // Cast the obj to an agent
-        Agent* agt = dynamic_cast<Agent*>(obj);
-        // if @agt is not zero than it is an agetn
-        if (agt != 0)
+        // Cast the obj to a plant to eat
+        Plant* plt = dynamic_cast<Plant*>(obj);
+        // if @plt is a zero than the casting failed so skip
+        if (plt != 0)
         {
-            // For now just kill the agent (Testing purposes)
-            if(agt->kill())
+            // Kill the plan for fitness improvement
+            if(plt->kill())
             {
                 fitness++;
             }

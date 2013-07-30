@@ -49,6 +49,8 @@ class Object
             so that is knows if the object needs to be deleted */
         bool alive() const { return type==ObjectBody::DIED ? false : true; }
 
+        bool kill();
+
     protected:
         /** Object should observe @world
             and set @xVel, @yVel */
@@ -56,8 +58,6 @@ class Object
 
         /** Create the body of your object */
         void setBody(SDL_Surface* body);
-
-        bool kill();
 
         /** Body type is by default real */
         ObjectBody::Type type;
