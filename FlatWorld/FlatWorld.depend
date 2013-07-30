@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1375126429 source:c:\users\pcooksey\documents\github\flatworld\flatworld\main.cpp
+1375191997 source:c:\users\pcooksey\documents\github\flatworld\flatworld\main.cpp
 	"SDL/SDL.h"
 	"include\world.h"
 	"include\agent.h"
@@ -7,7 +7,7 @@
 	<cstdlib>
 	<time.h>
 
-1375116733 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
+1375192410 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
 	"SDL/SDL.h"
 	"SDL/SDL_thread.h"
 	"object.h"
@@ -44,13 +44,12 @@
 	<cassert>
 	<cmath>
 
-1375134382 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\cgenalg.cpp
+1375134716 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\cgenalg.cpp
 	"../../include/ANN/CGenAlg.h"
 
-1375134685 c:\users\pcooksey\documents\github\flatworld\flatworld\include\ann\cgenalg.h
+1375134708 c:\users\pcooksey\documents\github\flatworld\flatworld\include\ann\cgenalg.h
 	<vector>
 	<algorithm>
 	<iostream>
 	<fstream>
-	"neuralnet.h"
 

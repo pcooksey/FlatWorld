@@ -17,6 +17,6 @@ int main( int argc, char* args[] )
         Agent* temp = new Agent(rand()%Screen::SCREEN_WIDTH, rand()%Screen::SCREEN_HEIGHT);
         world.addObject(temp);
     }
-    world.getStart();
+    world.getStarted();
     return 0;
 }

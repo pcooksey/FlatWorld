@@ -23,24 +23,25 @@ class World
         virtual ~World();
         bool successful() const { return success; };
         void addObject(Object* temp);
-        void getStart();
+        /** Controls the event loop of the world */
+        void getStarted();
 
     protected:
     private:
         bool init();
+        /** Controls the screen in another thread */
         int start();
+        /** Starts the thread that controls the screen */
         static int starter(void *data);
         void collisionDetection(int time);
 
         void setRunning(bool run);
         bool getRunning();
 
-        /// Is true when the init was successful
-        bool success;
-        /// Is true when start is running
-        bool running;
-        ///The protective semaphore for running
-        SDL_sem *runLock;
+        bool success; // Is true when the init was successful
+        bool running; // When false it signals for the @start thread to end
+        SDL_sem *runLock; //The protective semaphore for @running
+
         SDL_Surface* screen;
         std::list<Object*> objects;
 };

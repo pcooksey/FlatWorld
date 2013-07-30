@@ -33,14 +33,14 @@ void Object::move(const SDL_Surface* world, const Uint32& deltaTicks)
         yVel = -yVel;
     }
 
-    /// Move the object based on x velocity
+    // Move the object based on x velocity
     x += xVel * (deltaTicks / 100.f);
 
-    /// Move the object based on y velocity
+    // Move the object based on y velocity
     y += yVel * (deltaTicks / 100.f);
 
-    /// Must look after position gets changed because of collision
-    /// detection might change the velocity of the object
+    // Must look after position gets changed because of collision
+    // detection might change the velocity of the object
     look(world);
 }
 
@@ -51,9 +51,14 @@ SDL_Surface* Object::setBody()
 
 void Object::show(SDL_Surface* world) const
 {
-    /// Show the Object
+    // Show the Object on the world
     apply_surface( (int)x, (int)y, body, world );
 }
+
+
+/**
+    Static functions used by Object class
+*/
 
 void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip)
 {

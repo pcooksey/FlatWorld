@@ -20,28 +20,28 @@ World::~World()
 
 bool World::init()
 {
-    /// Initialize all SDL subsystems
+    // Initialize all SDL subsystems
     if( SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
         return false;
 
-    /// Set up the screen
+    // Set up the screen
     screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE );
 
-    /// If there was an error in setting up the screen
+    // If there was an error in setting up the screen
     if( screen == NULL )
         return false;
 
-    ///Create the semaphore
+    // Create the semaphore
     runLock = SDL_CreateSemaphore( 1 );
 
-    /// Set the window caption
+    // Set the window caption
     SDL_WM_SetCaption( "Flat World", NULL );
 
-    /// If everything initialized fine
+    // If everything initialized fine
     return true;
 }
 
-void World::getStart()
+void World::getStarted()
 {
     bool quit = false;
     running = true;
@@ -49,7 +49,7 @@ void World::getStart()
     SDL_Event event;
     while(!quit)
     {
-        /// Check if user wants to quit
+        // Check if user wants to quit
         while(SDL_PollEvent(&event))
         {
             if(event.type == SDL_QUIT)
@@ -69,37 +69,37 @@ int World::starter(void *data)
 
 int World::start()
 {
-    /// The frame rate regulator
+    // The frame rate regulator
     int delta = SDL_GetTicks(), time;
-    /// Object iterator
+    // Object iterator
     std::list<Object*>::iterator obj;
 
     while(getRunning())
     {
-        /// Time (dt) between frames
+        // Time (dt) between frames
         time = (SDL_GetTicks() - delta);
 
-        ///Check for future collisions here
+        // Check for future collisions here
         collisionDetection(time);
 
-        /// Move the objects in the world
+        // Move the objects in the world
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {
             (*obj)->move(screen,time);
         }
-        ///Start clock over again
+        // Start clock over again
         delta = SDL_GetTicks();
 
-        /// Clean the screen
+        // Clean the screen
         SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0, 0, 0 ) );
 
-        /// Print the objects onto the world
+        // Print the objects onto the world
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {
             (*obj)->show(screen);
         }
 
-        /// Update Screen
+        // Update Screen
         if(SDL_Flip( screen ) == -1)
             return 1;
     }
@@ -129,7 +129,7 @@ void World::addObject(Object* temp)
 
 void World::collisionDetection(int time)
 {
-    /// Object iterator
+    // Object iterator
     std::list<Object*>::iterator obj, check;
     int objx, objy, checkx, checky;
     for(obj = objects.begin(); obj!=objects.end(); ++obj)
