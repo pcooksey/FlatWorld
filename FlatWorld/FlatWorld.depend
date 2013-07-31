@@ -1,21 +1,19 @@
 # depslib dependency file v1.0
-1375212211 source:c:\users\pcooksey\documents\github\flatworld\flatworld\main.cpp
+1375280630 source:c:\users\pcooksey\documents\github\flatworld\flatworld\main.cpp
 	"SDL/SDL.h"
-	"include\world.h"
-	"include\agent.h"
-	"include\plant.h"
+	"include\environment.h"
 	<string>
 	<cstdlib>
 	<time.h>
 
-1375199051 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
+1375280208 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
 	"SDL/SDL.h"
 	"SDL/SDL_thread.h"
 	"object.h"
 	<string>
 	<list>
 
-1375211452 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\world.cpp
+1375221838 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\world.cpp
 	"..\include\world.h"
 
 1375213395 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\object.cpp
@@ -36,7 +34,7 @@
 	<vector>
 	<exception>
 
-1375213355 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
+1375214684 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
 	"..\include\agent.h"
 
 1375125600 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\neuralnet.cpp
@@ -60,4 +58,12 @@
 
 1375213354 c:\users\pcooksey\documents\github\flatworld\flatworld\include\plant.h
 	"Object.h"
+
+1375280321 c:\users\pcooksey\documents\github\flatworld\flatworld\include\environment.h
+	"world.h"
+	"agent.h"
+	"plant.h"
+
+1375280453 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\environment.cpp
+	"../include/environment.h"
 

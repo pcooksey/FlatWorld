@@ -76,15 +76,14 @@ int World::start()
 
     while(getRunning())
     {
-        // Time (dt) between frames
-        time = (SDL_GetTicks() - delta);
-
         // Check for future collisions here
         collisionDetection(time);
 
         // Removes all objects that died in the collision phase
         objects.remove_if(died);
 
+        // Time (dt) between frames
+        time = (SDL_GetTicks() - delta);
         // Move the objects in the world
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {
@@ -139,7 +138,7 @@ void World::collisionDetection(int time)
     {
         objx = (*obj)->Getx() + (*obj)->GetxVel() * (time / 100.f);
         objy = (*obj)->Gety() + (*obj)->GetyVel() * (time / 100.f);
-        for(check = objects.end(); check!=obj; --check)
+        for(check = --objects.end(); check!=obj; --check)
         {
             checkx = (*check)->Getx() + (*check)->GetxVel() * (time / 100.f);
             checky = (*check)->Gety() + (*check)->GetyVel() * (time / 100.f);
