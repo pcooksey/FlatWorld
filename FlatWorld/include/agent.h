@@ -17,9 +17,11 @@ class Agent : public Object
 {
     public:
         Agent(int x, int y);
+        Agent(int x, int y, const std::vector<double> &net);
         virtual ~Agent();
         double getFitness() { return fitness; }
         const NeuralNet& getNetwork() { return network; }
+        std::vector<double> getDNA() { return network.getDNA(); }
 
     protected:
     private:

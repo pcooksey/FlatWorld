@@ -11,6 +11,17 @@ Neuron::Neuron(unsigned numOutputs, unsigned myIndex)
     m_myIndex = myIndex;
 }
 
+Neuron::Neuron(unsigned numOutputs, unsigned myIndex, Weights& weights)
+{
+    for(unsigned c = 0; c < numOutputs; ++c)
+    {
+        m_outputWeights.push_back(Connection());
+        m_outputWeights.back().weight = weights[c];
+    }
+
+    m_myIndex = myIndex;
+}
+
 void Neuron::feedForward(const Layer &prevLayer)
 {
     double sum = 0;
@@ -81,6 +92,16 @@ double Neuron::transferFunctionDerivative(double x)
     return 1.0 - x * x;
 }
 
+Weights Neuron::getWeights()
+{
+    Weights newWeights;
+    for(int i=0; i<m_outputWeights.size(); ++i)
+    {
+        newWeights.push_back(m_outputWeights[i].weight);
+    }
+    return newWeights;
+}
+
 NeuralNet::NeuralNet(const std::vector<unsigned> &topology)
 {
     // The size of the neural network
@@ -102,22 +123,25 @@ NeuralNet::NeuralNet(const std::vector<unsigned> &topology)
 }
 
 NeuralNet::NeuralNet(const std::vector<unsigned> &topology, const std::vector<double> &net)
-:NeuralNet(topology)
 {
-    std::vector<double>::const_iterator it = net.begin();
+    Weights tempNet = net;
     // The size of the neural network
     unsigned numLayers = topology.size();
     for(unsigned layerNum = 0; layerNum<numLayers; ++layerNum)
     {
+        // Create a new layer and then fill it with neurons and bias
+        m_layers.push_back(Layer());
         unsigned numOutputs = layerNum == topology.size() -1 ? 0 : topology[layerNum + 1];
+
         for(unsigned neuronNum = 0; neuronNum <= topology[layerNum]; ++neuronNum)
         {
-            for(unsigned weight = 0; weight < numOutputs; ++weight)
-            {
-                m_layers[numLayers][neuronNum].m_outputWeights[weight].weight=(*it);
-                ++it;
-            }
+            Weights split_lo(tempNet.begin(), tempNet.begin() + numOutputs);
+            tempNet = Weights(tempNet.begin() + numOutputs, tempNet.end());
+            m_layers.back().push_back(Neuron(numOutputs, neuronNum, split_lo));
         }
+
+        // Force the bias node's output value to 1
+        m_layers.back().back().setOutputVal(1.0);
     }
 }
 
@@ -217,15 +241,13 @@ std::vector<double> NeuralNet::getDNA()
     std::vector<double> DNA;
     // The size of the neural network
     unsigned numLayers = m_layers.size();
-    for(unsigned layerNum = 0; layerNum<numLayers; ++layerNum)
+    for(unsigned layerNum = 0; layerNum<numLayers-1; ++layerNum)
     {
-        for(unsigned neuronNum = 0; neuronNum <= m_layers[layerNum].size(); ++neuronNum)
+        unsigned numOutputs = layerNum == m_layers.size() - 1 ? 0 : m_layers[layerNum + 1].size();
+        for(unsigned neuronNum = 0; neuronNum < m_layers[layerNum].size(); ++neuronNum)
         {
-            unsigned numOutputs = layerNum == m_layers.size() -1 ? 0 : m_layers[layerNum + 1].size();
-            for(unsigned weight = 0; weight < numOutputs; ++weight)
-            {
-                DNA.push_back(m_layers[numLayers][neuronNum].m_outputWeights[weight].weight);
-            }
+            Weights temp = m_layers[layerNum][neuronNum].getWeights();
+            DNA.insert( DNA.end(), temp.begin(), temp.end());
         }
     }
     return DNA;

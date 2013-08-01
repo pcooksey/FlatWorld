@@ -24,12 +24,14 @@ class Neuron
 {
     public:
         Neuron(unsigned numOutputs, unsigned myIndex);
+        Neuron(unsigned numOutputs, unsigned myIndex, Weights& weights);
         void setOutputVal(double val) { m_output = val;};
         double getOutputVal() const { return m_output;};
         void feedForward(const Layer &prevLayer);
         void calcOutputGradients(double targetVal);
         void calcHiddenGradients(const Layer &nextLayer);
         void updateInputWeights(Layer &prevLayer);
+        Weights getWeights();
 
     private:
         static const double eta = 0.15; // [0.0..1.0] overall net training rate

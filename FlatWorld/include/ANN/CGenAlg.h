@@ -111,7 +111,7 @@ private:
 
 public:
 
-	CGenAlg(int popsize, double	MutRat, double CrossRat, int numweights);
+	CGenAlg(int popsize, double	MutRat, double CrossRat);
 
 	//this runs the GA for one generation.
 	vector<SGenome>	Epoch(vector<SGenome> &old_pop);

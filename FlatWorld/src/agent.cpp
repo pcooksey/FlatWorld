@@ -6,6 +6,12 @@ Agent::Agent(int x, int y)
     fitness = 0;
 }
 
+Agent::Agent(int x, int y, const std::vector<double> &net)
+    :Object(x,y), network(topology, net)
+{
+    fitness = 0;
+}
+
 Agent::~Agent()
 {
     //dtor

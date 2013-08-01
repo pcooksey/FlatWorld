@@ -6,14 +6,14 @@
 	<cstdlib>
 	<time.h>
 
-1375280208 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
+1375282634 c:\users\pcooksey\documents\github\flatworld\flatworld\include\world.h
 	"SDL/SDL.h"
 	"SDL/SDL_thread.h"
 	"object.h"
 	<string>
 	<list>
 
-1375221838 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\world.cpp
+1375282656 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\world.cpp
 	"..\include\world.h"
 
 1375213395 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\object.cpp
@@ -26,7 +26,7 @@
 	<ctime>
 	<limits>
 
-1375214401 c:\users\pcooksey\documents\github\flatworld\flatworld\include\agent.h
+1375284954 c:\users\pcooksey\documents\github\flatworld\flatworld\include\agent.h
 	"object.h"
 	"plant.h"
 	"ANN/NeuralNet.h"
@@ -34,22 +34,22 @@
 	<vector>
 	<exception>
 
-1375214684 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
+1375284905 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\agent.cpp
 	"..\include\agent.h"
 
-1375125600 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\neuralnet.cpp
+1375294875 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\neuralnet.cpp
 	"../../include/ANN/neuralnet.h"
 
-1375134656 c:\users\pcooksey\documents\github\flatworld\flatworld\include\ann\neuralnet.h
+1375290150 c:\users\pcooksey\documents\github\flatworld\flatworld\include\ann\neuralnet.h
 	<vector>
 	<cstdlib>
 	<cassert>
 	<cmath>
 
-1375134716 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\cgenalg.cpp
+1375283869 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\ann\cgenalg.cpp
 	"../../include/ANN/CGenAlg.h"
 
-1375207598 c:\users\pcooksey\documents\github\flatworld\flatworld\include\ann\cgenalg.h
+1375283869 c:\users\pcooksey\documents\github\flatworld\flatworld\include\ann\cgenalg.h
 	<vector>
 	<algorithm>
 
@@ -59,11 +59,14 @@
 1375213354 c:\users\pcooksey\documents\github\flatworld\flatworld\include\plant.h
 	"Object.h"
 
-1375280321 c:\users\pcooksey\documents\github\flatworld\flatworld\include\environment.h
+1375285111 c:\users\pcooksey\documents\github\flatworld\flatworld\include\environment.h
 	"world.h"
 	"agent.h"
 	"plant.h"
+	"ANN/CGenAlg.h"
+	<list>
+	<vector>
 
-1375280453 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\environment.cpp
+1375285193 source:c:\users\pcooksey\documents\github\flatworld\flatworld\src\environment.cpp
 	"../include/environment.h"
 

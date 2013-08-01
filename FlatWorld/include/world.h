@@ -21,6 +21,8 @@ static bool died(Object* obj) { return !obj->alive(); };
 class World
 {
     public:
+        typedef std::list<Object*> Object_list;
+
         World();
         virtual ~World();
         bool successful() const { return success; };
@@ -29,6 +31,11 @@ class World
         void getStarted();
 
     protected:
+        /** Add objects to world during this phase */
+        virtual void addObjects(const Object_list& objects) = 0;
+
+        void clearObjects();
+
     private:
         bool init();
         /** Controls the screen in another thread */
@@ -45,7 +52,7 @@ class World
         SDL_sem *runLock; //The protective semaphore for @running
 
         SDL_Surface* screen;
-        std::list<Object*> objects;
+        Object_list objects;
 };
 
 #endif // WORLD_H

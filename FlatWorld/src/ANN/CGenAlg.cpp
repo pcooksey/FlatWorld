@@ -5,14 +5,14 @@
 //	sets up the population with random floats
 //
 //-----------------------------------------------------------------------
-CGenAlg::CGenAlg(int popsize, double MutRat, double	CrossRat,
-                 int numweights)
+CGenAlg::CGenAlg(int popsize, double MutRat, double	CrossRat)
 :m_iPopSize(popsize), m_dMutationRate(MutRat),
-m_dCrossoverRate(CrossRat),m_iChromoLength(numweights),m_dTotalFitness(0),m_cGeneration(0),m_iFittestGenome(0),
+m_dCrossoverRate(CrossRat),m_iChromoLength(0),m_dTotalFitness(0),m_cGeneration(0),m_iFittestGenome(0),
 m_dBestFitness(0),m_dWorstFitness(99999999),m_dAverageFitness(0)
 {
 	//initialise population with chromosomes consisting of random
 	//weights and all fitnesses set to zero
+	/* I don't need a population
 	for (int i=0; i<m_iPopSize; ++i)
 	{
 		m_vecPop.push_back(SGenome());
@@ -22,6 +22,7 @@ m_dBestFitness(0),m_dWorstFitness(99999999),m_dAverageFitness(0)
 			m_vecPop[i].vecWeights.push_back(RandomClamped());
 		}
 	}
+	*/
 }
 
 
@@ -252,5 +253,6 @@ void CGenAlg::Reset()
 	m_dBestFitness		= 0;
 	m_dWorstFitness		= 9999999;
 	m_dAverageFitness	= 0;
+	m_iChromoLength = m_vecPop[0].vecWeights.size();
 }
 

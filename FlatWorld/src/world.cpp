@@ -76,26 +76,31 @@ int World::start()
 
     while(getRunning())
     {
-        // Check for future collisions here
+        // Check for future collisions of objects
         collisionDetection(time);
 
         // Removes all objects that died in the collision phase
         objects.remove_if(died);
 
-        // Time (dt) between frames
+        // Time (dt) between frames **No need for fps**
         time = (SDL_GetTicks() - delta);
-        // Move the objects in the world
+
+        // Move all objects in the world using their velocities
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {
-            (*obj)->move(screen,time);
+            // Objects will be able to look around the world during @move()
+            (*obj)->move(screen, time);
         }
-        // Start clock over again
+
+        // Start clock over for time (dt)
         delta = SDL_GetTicks();
 
-        // Clean the screen
+        // Clean the screen to black
         SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0, 0, 0 ) );
 
-        // Print the objects onto the world
+        addObjects(objects);
+
+        // Place all the objects into the world
         for(obj = objects.begin(); obj!=objects.end(); ++obj)
         {
             (*obj)->show(screen);
@@ -122,6 +127,16 @@ bool World::getRunning()
     bool run = running;
     SDL_SemPost( runLock ); //unlock
     return run;
+}
+
+void World::clearObjects()
+{
+    Object_list::iterator it;
+    for(it=objects.begin(); it!=objects.end(); ++it)
+    {
+        delete (*it);
+    }
+    objects.clear();
 }
 
 void World::addObject(Object* temp)
