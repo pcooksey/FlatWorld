@@ -42,10 +42,10 @@ void Environment::addObjects(const Object_list& objects)
         std::list<Agent*>::iterator it;
         for(it=agents.begin(); it!=agents.end(); ++it)
         {
+            (*it)->getDNA();
             population.push_back(SGenome((*it)->getDNA(), (*it)->getFitness()));
         }
         population = geneticAlg.Epoch(population);
-        World::clearObjects();
         initNewPopulation();
         startTime = SDL_GetTicks();
     }
@@ -61,6 +61,8 @@ void Environment::addObjects(const Object_list& objects)
 
 void Environment::initNewPopulation()
 {
+    World::clearObjects();
+    agents.clear();
     for(int i=0; i<10; ++i)
     {
         Agent* temp = new Agent(rand()%Screen::SCREEN_WIDTH, rand()%Screen::SCREEN_HEIGHT, population[i].vecWeights);

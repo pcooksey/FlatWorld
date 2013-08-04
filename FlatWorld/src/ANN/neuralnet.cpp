@@ -15,6 +15,7 @@ Neuron::Neuron(unsigned numOutputs, unsigned myIndex, Weights& weights)
 {
     for(unsigned c = 0; c < numOutputs; ++c)
     {
+        int size = weights.size();
         m_outputWeights.push_back(Connection());
         m_outputWeights.back().weight = weights[c];
     }
@@ -243,7 +244,7 @@ std::vector<double> NeuralNet::getDNA()
     unsigned numLayers = m_layers.size();
     for(unsigned layerNum = 0; layerNum<numLayers-1; ++layerNum)
     {
-        unsigned numOutputs = layerNum == m_layers.size() - 1 ? 0 : m_layers[layerNum + 1].size();
+        //unsigned numOutputs = m_layers[layerNum + 1].size();
         for(unsigned neuronNum = 0; neuronNum < m_layers[layerNum].size(); ++neuronNum)
         {
             Weights temp = m_layers[layerNum][neuronNum].getWeights();

@@ -25,7 +25,7 @@ void Agent::look(const SDL_Surface* world)
     inputValues.push_back(GetyVel()*8);
 
     network.feedForward(inputValues);
-    std::cout<<"Input: "<<inputValues[0]<<" : "<<inputValues[1]<<std::endl;
+    //std::cout<<"Input: "<<inputValues[0]<<" : "<<inputValues[1]<<std::endl;
 
     /*
     targetValues.clear();
@@ -37,7 +37,7 @@ void Agent::look(const SDL_Surface* world)
     network.getResults(resultValues);
     SetxVel(resultValues[0]*8);
     SetyVel(resultValues[1]*8);
-    std::cout<<"Result: "<<resultValues[0]<<" : "<<resultValues[1]<<std::endl;
+    //std::cout<<"Result: "<<resultValues[0]<<" : "<<resultValues[1]<<std::endl;
 
     //network.backProp(targetValues);
 
