@@ -164,10 +164,12 @@ void World::collisionDetection(int time)
                 || objx >= checkx + (*check)->Object_WIDTH() )
             {} else {
                 // Set the velocity of the object to zero
-                (*obj)->SetxVel(0);
-                (*obj)->SetyVel(0);
-                (*check)->SetxVel(0);
-                (*check)->SetyVel(0);
+                /*float velxObj = (*obj)->GetxVel();
+                float velyObj = (*obj)->GetyVel();
+                (*obj)->SetxVel((*check)->GetxVel());
+                (*obj)->SetyVel((*check)->GetyVel());
+                (*check)->SetxVel(velxObj);
+                (*check)->SetyVel(velyObj); */
 
                 // Only make object collide with check
                 (*obj)->collision(*check);

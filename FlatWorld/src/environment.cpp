@@ -36,7 +36,7 @@ void Environment::addObjects(const Object_list& objects)
 {
     int time = SDL_GetTicks() - startTime;
 
-    if(time>=600)
+    if(time>=30000)
     {
         population.clear();
         std::list<Agent*>::iterator it;
